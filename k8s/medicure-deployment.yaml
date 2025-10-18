@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: medicure-deployment
+  labels:
+    app: medicure
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: medicure
+  template:
+    metadata:
+      labels:
+        app: medicure
+    spec:
+      containers:
+        - name: medicure-container
+          image: 046264622692.dkr.ecr.us-east-1.amazonaws.com/medicure-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
